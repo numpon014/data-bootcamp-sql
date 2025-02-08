@@ -27,4 +27,17 @@ SELECT
 FROM customers
 WHERE country <> 'USA'
 GROUP BY country
-HAVING COUNT(*) >= 5
+HAVING COUNT(*) >= 5;
+
+
+-- JOIN - Aggregate Function (Count)
+SELECT
+    t2.Name as genres_name,
+    COUNT(t1.name),
+    AVG(Bytes) as avg_bytes,
+    SUM(Bytes) as total_bytes,
+    MAX(Bytes) as max_bytes,
+    MIN(Bytes) as min_bytes
+FROM tracks t1
+JOIN genres t2 ON t1.GenreId = t2.GenreId
+GROUP BY 1
