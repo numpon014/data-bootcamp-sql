@@ -47,33 +47,3 @@ FROM artists as ar
          JOIN genres as ge
               ON tr.GenreId = ge.GenreId
 WHERE ge.name in ('Jazz', 'Pop', 'Rock');
-
--- JOIN Multiple Tables with WHERE Clause and Group By
-SELECT
-    ge.Name as genres_name,
-    COUNT(*) as total_tracks
-FROM artists as ar
-         JOIN albums as al
-              ON ar.ArtistId = al.ArtistId
-         JOIN tracks as tr
-              ON al.AlbumId = tr.AlbumId
-         JOIN genres as ge
-              ON tr.GenreId = ge.GenreId
-WHERE ge.name in ('Jazz', 'Pop', 'Rock')
-GROUP BY 1
-ORDER BY 2 DESC;
-
--- JOIN Multiple Tables with WHERE Clause and Group By
-SELECT
-    ar.name as artist_name,
-    ge.Name as genres_name,
-    COUNT(*) as total_tracks
-FROM artists as ar
-         JOIN albums as al
-              ON ar.ArtistId = al.ArtistId
-         JOIN tracks as tr
-              ON al.AlbumId = tr.AlbumId
-         JOIN genres as ge
-              ON tr.GenreId = ge.GenreId
-WHERE ge.name in ('Jazz', 'Pop', 'Rock')
-GROUP BY 1,2
